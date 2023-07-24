@@ -1,6 +1,6 @@
 
-import javax.swing.JOptionPane;
 import java.text.*;
+import javax.swing.JOptionPane;
 
 public class CoinConverterMain {
 
@@ -8,12 +8,11 @@ public class CoinConverterMain {
 
 		Divisas monedaCambio = new Divisas();
 
-		Object[] options = { "converter Divisas", "ConvertIr Temperatura", "salir" };
+		Object[] options = { "Convertir de pesos a otra moneda", "Convertir de otra moneda a pesos",
+				"ConvertIr Temperatura", "salir" };
 		int elige = JOptionPane.showOptionDialog(null, "Que quieres hacer", "Conversor", JOptionPane.DEFAULT_OPTION,
 				JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
-		// int convert = JOptionPane.showOptionDialog(null, "elige una moneda", null,
-		// elige, elige, null, options, options);
-		if (elige == 2) {
+		if (elige == 3) {
 			JOptionPane.showMessageDialog(null, "programa cerrado");
 			System.exit(0);
 		}
@@ -33,68 +32,96 @@ public class CoinConverterMain {
 				} catch (NumberFormatException e) {
 					JOptionPane.showMessageDialog(null, "valor no valido");
 				}
-				
-				switch(cambio) {
-				case "Pesos a Euros":double euros = mXN / monedaCambio.eur;
-				JOptionPane.showMessageDialog(null,	mXN + "Pesos Mexicanos son: " + formatCurrencies.format(euros) + " Euros ");
+
+				switch (cambio) {
+				case "Pesos a Euros":
+					double euros = mXN / monedaCambio.eur;
+					JOptionPane.showMessageDialog(null,
+							mXN + "Pesos Mexicanos son: " + formatCurrencies.format(euros) + " Euros ");
 					break;
-				
-				case "Pesos a Dolares":double dolares = mXN / monedaCambio.dll;
-				JOptionPane.showMessageDialog(null,	mXN + "Pesos Mexicanos son: " + formatCurrencies.format(dolares) + " Dolares ");
+
+				case "Pesos a Dolares":
+					double dolares = mXN / monedaCambio.dll;
+					JOptionPane.showMessageDialog(null,
+							mXN + "Pesos Mexicanos son: " + formatCurrencies.format(dolares) + " Dolares ");
 					break;
-				
-				case "Pesos a Libras esterlinas":double gbp = mXN / monedaCambio.gbp;
-				JOptionPane.showMessageDialog(null,	mXN + "Pesos Mexicanos son: " + formatCurrencies.format(gbp) + " Libras esterlinas ");
+
+				case "Pesos a Libras esterlinas":
+					double gbp = mXN / monedaCambio.gbp;
+					JOptionPane.showMessageDialog(null,
+							mXN + "Pesos Mexicanos son: " + formatCurrencies.format(gbp) + " Libras esterlinas ");
 					break;
-					
-				case "Pesos a yen":double yen = mXN / monedaCambio.jpy;
-				JOptionPane.showMessageDialog(null, mXN + "Pesos Mexicanos son: " + formatCurrencies.format(yen) + " yen ");
+
+				case "Pesos a yen":
+					double yen = mXN / monedaCambio.jpy;
+					JOptionPane.showMessageDialog(null,
+							mXN + "Pesos Mexicanos son: " + formatCurrencies.format(yen) + " yen ");
 					break;
-					
-				case "Pesos a Won sul-coreano":double won = mXN / monedaCambio.won;
-				JOptionPane.showMessageDialog(null,	mXN + "Pesos Mexicanos son: " + formatCurrencies.format(won) + " won");
-						
+
+				case "Pesos a Won sul-coreano":
+					double won = mXN / monedaCambio.won;
+					JOptionPane.showMessageDialog(null,
+							mXN + "Pesos Mexicanos son: " + formatCurrencies.format(won) + " won");
+
 					break;
 				default:
 					break;
 				}
+			}
+		}
+		if (elige == 1) {
+			DecimalFormat formatCurrencies = new DecimalFormat("#.##");
+			boolean continuarPrograma = true;
+			while (continuarPrograma) {
+				String[] opciones = { "Euros a Pesos", "Dolares a Pesos", "Libras Esterlinas a Pesos", "yen a Pesos",
+						"Won sul-coreano a Pesos" };
+				String cambio = (String) JOptionPane.showInputDialog(null, "elija una opcion", "Conversor de Monedas",
+						JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[0]);
+				String input2 = JOptionPane.showInputDialog(null, "Ingrese Cantidad: ");
+				double coinX = 0;
 
-//				if (cambio.equals("Pesos a Euros")) {
-//					double euros = mXN / monedaCambio.eur;
-//					JOptionPane.showMessageDialog(null,
-//							mXN + "Pesos Mexicanos son: " + formatCurrencies.format(euros) + "Euros ");
-//
-//				} else if (cambio.equals("Pesos a Dolares")) {
-//					double dolares = mXN / monedaCambio.dll;
-//					JOptionPane.showMessageDialog(null,
-//							mXN + "Pesos Mexicanos son: " + formatCurrencies.format(dolares) + "Dolares ");
-//
-//				} else if (cambio.equals("Pesos a Libras esterlinas")) {
-//					double gbp = mXN / monedaCambio.gbp;
-//					JOptionPane.showMessageDialog(null,
-//							mXN + "Pesos Mexicanos son: " + formatCurrencies.format(gbp) + "Libras esterlinas ");
-//
-//				} else if (cambio.equals("Pesos a yen")) {
-//					double yen = mXN / monedaCambio.jpy;
-//					JOptionPane.showMessageDialog(null,
-//							mXN + "Pesos Mexicanos son: " + formatCurrencies.format(yen) + "yen ");
-//
-//				 if (cambio.equals("Pesos a won")) {
-//					double won = mXN / monedaCambio.won;
-//					JOptionPane.showMessageDialog(null,
-//							mXN + "Pesos Mexicanos son: " + formatCurrencies.format(won) + "Won ");
-//
-				//}
+				try {
+					coinX = Double.parseDouble(input2);
+				} catch (NumberFormatException e) {
+					JOptionPane.showMessageDialog(null, "valor no valido");
+				}
 
-				int confirma = JOptionPane.showConfirmDialog(null, "Desea continuar el programa?", "confirmar",
-						JOptionPane.YES_NO_CANCEL_OPTION);
-				if (confirma == JOptionPane.NO_OPTION || confirma == JOptionPane.CANCEL_OPTION) {
-					continuarPrograma = false;
-					JOptionPane.showMessageDialog(null, "Programa terminado");
+				switch (cambio) {
+				case "Euros a Pesos":
+					double euros =  monedaCambio.eur * coinX;
+					JOptionPane.showMessageDialog(null, formatCurrencies.format(coinX)  + " Euros igual a: " +   formatCurrencies.format(euros) + " MXN ");
+					break;
+
+				case "Dolares a Pesos":
+					double dll = monedaCambio.dll * coinX;
+					JOptionPane.showMessageDialog(null, formatCurrencies.format(coinX)  + " Dolares igual a: " + formatCurrencies.format(dll) + " MXN ");
+					break;
+
+				case "Libras Esterlinas a Pesos":
+					double gbp = monedaCambio.gbp * coinX;
+					JOptionPane.showMessageDialog(null, formatCurrencies.format(coinX)  + " Libras Esterlinas igual a: " + formatCurrencies.format(gbp) + " MXN ");
+					break;
+
+				case "yen a Pesos":
+					double yen = monedaCambio.jpy * coinX;
+					JOptionPane.showMessageDialog(null, formatCurrencies.format(coinX)  + " Yens igual a: " + formatCurrencies.format(yen) + " MXN ");
+					break;
+
+				case "Won sul-coreano a Pesos":
+					double won = monedaCambio.won * coinX;
+					JOptionPane.showMessageDialog(null, formatCurrencies.format(coinX)  + " Wons igual a: " + formatCurrencies.format(won) + " MXN ");
+					break;
+				default:
+					break;
 				}
 			}
 
+			int confirma = JOptionPane.showConfirmDialog(null, "Desea continuar el programa?", "confirmar",
+					JOptionPane.YES_NO_CANCEL_OPTION);
+			if (confirma == JOptionPane.NO_OPTION || confirma == JOptionPane.CANCEL_OPTION) {
+				continuarPrograma = false;
+				JOptionPane.showMessageDialog(null, "Programa terminado");
+			}
 		}
-
 	}
 }
