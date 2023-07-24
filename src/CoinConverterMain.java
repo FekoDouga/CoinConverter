@@ -69,6 +69,37 @@ public class CoinConverterMain {
 				}
 			}
 		}
+		if (elige == 2) {
+			DecimalFormat formatTemp = new DecimalFormat("#.##");
+			boolean continuarPrograma = true;
+			while (continuarPrograma) {
+				String[] opciones = { "Celcius a Farenheit", "Farenheit a Celcius"};
+				String cambio = (String) JOptionPane.showInputDialog(null, "elija una opcion", "Conversor de Temperatura",
+						JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[0]);
+				String input = JOptionPane.showInputDialog(null, "Ingrese Cantidad: ");
+				double tempX = 0;
+				
+				try {
+					tempX = Double.parseDouble(input);
+				}catch (NumberFormatException e) {
+					JOptionPane.showMessageDialog(null, "Valor no valido");
+				}
+				
+				switch (cambio) {
+				case "Celcius a Farenheit":
+					double farenheit = (tempX  * 9/5) + 32;
+					JOptionPane.showMessageDialog(null,formatTemp.format(farenheit) + "° Farenheit");
+					break;
+				case "Farenheit a Celcius":
+					double celcius = (tempX - 32) * 5/9;
+					JOptionPane.showMessageDialog(null,formatTemp.format(celcius) + "° Celcius");
+					break;
+					
+					
+					
+				}
+			}
+		}
 		if (elige == 1) {
 			DecimalFormat formatCurrencies = new DecimalFormat("#.##");
 			boolean continuarPrograma = true;
