@@ -1,9 +1,14 @@
+
+
 import javax.swing.JOptionPane;
 import java.text.*;
 
 public class CoinConverterMain {
+	
 
 	public static void main (String[] args) {
+		
+		Divisas monedaCambio = new Divisas();
 		
 		Object[] options = {"converter Divisas", "ConvertIr Temperatura", "salir"};
 		int elige = JOptionPane.showOptionDialog(null, "Que quieres hacer", "Conversor",
@@ -30,27 +35,27 @@ public class CoinConverterMain {
 				}
 		
 		if (cambio.equals("Pesos a Euros")){
-			double euros = pesos / 20;
+			double euros = pesos / monedaCambio.eur ;
 			JOptionPane.showMessageDialog(null, 
 					pesos + "Pesos Mexicanos son: " + formatearDivisas.format(euros) + "Euros ");
 			
 		}else if(cambio.equals("Pesos a Dolares")){
-			double dolares = pesos / 17;
+			double dolares = pesos / monedaCambio.dll;
 			JOptionPane.showMessageDialog(null, 
 					pesos + "Pesos Mexicanos son: " + formatearDivisas.format(dolares) + "Dolares ");
 			
 		}else if(cambio.equals("Pesos a Libras esterlinas")){
-			double libras = pesos / 25;
+			double libras = pesos / monedaCambio.gbp;
 			JOptionPane.showMessageDialog(null, 
 					pesos + "Pesos Mexicanos son: " + formatearDivisas.format(libras) + "Libras esterlinas ");
 			
 		}else if(cambio.equals("Pesos a yen")){
-			double yen = pesos / 50;
+			double yen = pesos / monedaCambio.jpy;
 			JOptionPane.showMessageDialog(null, 
 					pesos + "Pesos Mexicanos son: " + formatearDivisas.format(yen) + "yen ");
 			
 		}else if(cambio.equals("Pesos a won")){
-			double won = pesos / 12;
+			double won = pesos / monedaCambio.won;
 			JOptionPane.showMessageDialog(null, 
 					pesos + "Pesos Mexicanos son: " + formatearDivisas.format(won) + "Won ");
 			
